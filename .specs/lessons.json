@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 4,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "ac_gap::when a project defers repository db layer tests to manual smoke testing persist the smoke test s evidence log script output so a later ac covering db only behavior e g unique constraint release after delete isn t left with zero auditable evidence",
+      "text": "When a project defers repository/DB-layer tests to manual smoke testing, persist the smoke test's evidence (log/script output) so a later AC covering DB-only behavior (e.g. unique-constraint release after delete) isn't left with zero auditable evidence.",
+      "signal": "ac_gap",
+      "scope": "backend-api",
+      "status": "candidate",
+      "features": [
+        "backend-api"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "DEL-03 / .specs/features/backend-api/validation.md (backend-api)"
+      ],
+      "created": "2026-08-10T21:45:06Z",
+      "last_seen": "2026-08-10T21:45:06Z"
+    },
+    {
+      "id": "L-002",
+      "key": "surviving_mutant::when a component test mocks the entire hooks data layer module add at least one test that exercises the real hook e g via renderhook a real queryclientprovider so optimistic update and rollback logic isn t left with zero real coverage",
+      "text": "When a component test mocks the entire hooks/data-layer module, add at least one test that exercises the real hook (e.g. via renderHook + a real QueryClientProvider) so optimistic-update and rollback logic isn't left with zero real coverage.",
+      "signal": "surviving_mutant",
+      "scope": "frontend-web,hooks,react-query",
+      "status": "candidate",
+      "features": [
+        "frontend-web"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "web/src/hooks/useLinksApi.ts:58-62 (mutation #6, validation.md Discrimination Sensor) (frontend-web,hooks,react-query)"
+      ],
+      "created": "2026-08-11T23:01:09Z",
+      "last_seen": "2026-08-11T23:01:09Z"
+    },
+    {
+      "id": "L-003",
+      "key": "spec_precision_gap::a test coverage matrix that claims a layer is exercised indirectly by component tests must be verified against whether those component tests actually mock that layer away if they do the claim is false and the layer has zero real coverage",
+      "text": "A test coverage matrix that claims a layer is 'exercised indirectly' by component tests must be verified against whether those component tests actually mock that layer away — if they do, the claim is false and the layer has zero real coverage.",
+      "signal": "spec_precision_gap",
+      "scope": "frontend-web,test-coverage-matrix",
+      "status": "candidate",
+      "features": [
+        "frontend-web"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "validation.md — FORM-01/DEL-01/DEL-02 spec-anchored AC table (frontend-web,test-coverage-matrix)"
+      ],
+      "created": "2026-08-11T23:01:09Z",
+      "last_seen": "2026-08-11T23:01:09Z"
+    }
+  ]
+}
