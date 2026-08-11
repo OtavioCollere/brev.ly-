@@ -1,0 +1,30 @@
+{
+  "name": "brevly-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/server.js",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "drizzle-kit migrate"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1104.0",
+    "@fastify/cors": "^11.3.0",
+    "drizzle-orm": "^0.45.2",
+    "fastify": "^5.11.2",
+    "pg": "^8.22.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "@types/pg": "^8.20.4",
+    "drizzle-kit": "^0.31.10",
+    "tsx": "^4.23.8",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  }
+}
