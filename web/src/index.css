@@ -1,0 +1,37 @@
+@import 'tailwindcss';
+
+@import '@fontsource/open-sans/400.css';
+@import '@fontsource/open-sans/600.css';
+@import '@fontsource/open-sans/700.css';
+
+@theme {
+  /* Colors — Style Guide (spec.md) */
+  --color-blue-base: #2c46b1;
+  --color-blue-dark: #2c4091;
+  --color-white: #ffffff;
+  --color-gray-100: #f9f9fb;
+  --color-gray-200: #e4e6ec;
+  --color-gray-300: #cdcfd5;
+  --color-gray-400: #74798b;
+  --color-gray-500: #4d505c;
+  --color-gray-600: #1f2025;
+  --color-danger: #b12c4d;
+
+  /* Typography — Style Guide (spec.md) */
+  --font-sans: 'Open Sans', sans-serif;
+
+  --text-xl: 24px;
+  --text-xl--line-height: 32px;
+  --text-lg: 18px;
+  --text-lg--line-height: 24px;
+  --text-md: 14px;
+  --text-md--line-height: 18px;
+  --text-sm: 12px;
+  --text-sm--line-height: 16px;
+  --text-xs: 10px;
+  --text-xs--line-height: 14px;
+}
+
+body {
+  font-family: var(--font-sans);
+}
