@@ -80,7 +80,8 @@
   - backend-api: Execute concluído — 24/24 tasks, Verifier **PASS** (1 gap não-bloqueante: DEL-03 sem teste automatizado). 38/38 testes, docker build/run confirmados. Nada commitado.
   - frontend-web: Execute concluído — 18/18 tasks, Verifier **PASS** na v2 (pós-fix). 43/43 testes, build/typecheck limpos. Fluxo completo (create/list/resolve+increment/delete/404/CORS) verificado via curl direto contra o backend real. Nada commitado.
 - **In-progress**: nenhum arquivo em edição
-- **Next step**: usuário decide — (a) pedir commit de `server/` e `web/`, (b) fazer a checagem visual/responsiva num browser real (não foi possível nesta sessão — nenhuma ferramenta de automação de browser conectada; Success Criterion do spec.md de fidelidade ao Figma/responsividade fica formalmente não confirmado até isso acontecer)
-- **Blockers**: nenhum funcional. Pendência conhecida: verificação visual em browser real (mobile 390px / desktop 1366px) ainda não foi feita — recomendado antes da entrega final do desafio
-- **Uncommitted files**: `server/` inteiro (24 tasks) + `web/` inteiro (18 tasks) + `.specs/` inteiro — nada commitado ainda, por pedido explícito do usuário
+- **Next step**: usuário decide sobre deploy — front (Vercel, cogitado) e onde hospedar o back (precisa suportar Docker+Postgres; Vercel sozinho não serve pro backend). Ver nota abaixo.
+- **Blockers**: nenhum funcional. Pendência conhecida: verificação visual em browser real (mobile 390px / desktop 1366px) ainda não foi feita — recomendado antes de considerar o design "confirmado"
+- **Commits**: tudo commitado e pushado pro `origin/main` (12 commits: 2 docs + 6 server + 4 web, mensagens em pt-BR, ordem por dependência). Working tree limpo.
+- **Nota de deploy**: usuário perguntou sobre deploy na Vercel. Front (SPA estática) dá pra hospedar lá, mas só funciona de verdade com `VITE_BACKEND_URL` apontando pra um backend real já no ar — o backend (Fastify+Postgres) ainda só rodou local/efêmero, nunca foi deployado. Vercel não serve pro backend (precisa de Postgres + processo long-running); precisa de um host tipo Railway/Render/Fly.io que suporte o Dockerfile já pronto em `server/`.
 - **Branch**: main
