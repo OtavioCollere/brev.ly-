@@ -1,32 +1,66 @@
-# React + TypeScript + Vite
+# Brev.ly — Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+SPA React do encurtador de URLs Brev.ly. Feita com Vite + React + TypeScript, consumindo a API em [`../server`](../server).
 
-Currently, two official plugins are available:
+Resolve o desafio prático **Frontend** da Rocketseat (trilha Fundamentos Técnicos e Estratégicos), seguindo o layout do [Figma do desafio](https://www.figma.com).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- **TypeScript**
+- **React** + **Vite** (SPA, sem framework)
+- **React Router** — roteamento
+- **TanStack React Query** — cache/loading/erro das chamadas de API
+- **React Hook Form** + **Zod** — formulário e validação
+- **Tailwind CSS** — estilização, tema mapeado 1:1 com o Style Guide do Figma
+- **Vitest** + **Testing Library** — testes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Rodando localmente
 
-## Expanding the Oxlint configuration
+Pré-requisitos: Node.js 20+, o [backend](../server) rodando (local ou já deployado).
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+cp .env.example .env
+# preencha VITE_BACKEND_URL com a URL do backend
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### Variáveis de ambiente
+
+| Variável | Descrição |
+| --- | --- |
+| `VITE_BACKEND_URL` | URL base da API (ex. `http://localhost:3333`) |
+| `VITE_FRONTEND_URL` | URL pública deste próprio app (usada, por exemplo, se algo precisar montar o link completo `brev.ly/slug`) |
+
+## Scripts
+
+| Script | O que faz |
+| --- | --- |
+| `npm run dev` | Sobe o servidor de desenvolvimento (Vite) |
+| `npm run build` | Gera a build de produção em `dist/` |
+| `npm run preview` | Serve a build de produção localmente |
+| `npm test` | Roda a suíte de testes (Vitest + Testing Library) |
+| `npm run typecheck` | Checagem de tipos sem emitir arquivos |
+
+## Páginas
+
+- **`/`** — formulário de cadastro ("Novo link") + listagem paginada dos links cadastrados ("Meus links"), com estados de carregamento, vazio e erro; copiar link, deletar e exportar CSV.
+- **`/:slug`** — página de redirecionamento: resolve o slug na API (que já incrementa o contador de acessos), mostra "Redirecionando..." e leva o navegador pro destino original após um instante (com link manual de fallback).
+- **qualquer outra rota, ou um slug que não existe** — página "Link não encontrado".
+
+## Decisões de projeto
+
+- O campo "Link encurtado" do formulário mostra o prefixo fixo `brev.ly/` e o usuário só digita o slug — o valor mandado pra API é só o slug, sem domínio (bate com o formato que o backend espera).
+- Se a URL original for digitada sem `http://`/`https://`, o formulário tenta completar com `https://` antes de validar — evita fricção sem enfraquecer a validação (o backend exige protocolo).
+- Deletar um link não pede confirmação (não fazia parte do escopo obrigatório).
+- Paginação simples (Anterior/Próxima), aparece só quando há mais links do que cabem numa página.
+
+Mais detalhes de arquitetura, o Style Guide extraído do Figma (cores, tipografia, ícones) e o raciocínio completo por trás de cada decisão estão em [`.specs/features/frontend-web/`](../.specs/features/frontend-web/) e no log de decisões em [`.specs/STATE.md`](../.specs/STATE.md).
+
+## Testes
+
+```bash
+npm test
+```
+
+43 testes (Vitest + Testing Library) cobrindo formulário, listagem, exportação, página de redirecionamento e os hooks de dados (React Query com `QueryClientProvider` real, só a chamada HTTP é mockada).
