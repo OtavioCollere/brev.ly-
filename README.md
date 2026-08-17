@@ -6,7 +6,7 @@ Permite cadastrar, listar e remover links encurtados, contar os acessos de cada 
 
 ## Demo
 
-- **App**: _(link após o deploy na Vercel)_
+- **App**: https://brev-ly-xi.vercel.app/
 - **API**: _(link após o deploy no Render)_
 
 ## Estrutura
