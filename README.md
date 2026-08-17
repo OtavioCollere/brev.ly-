@@ -7,7 +7,9 @@ Permite cadastrar, listar e remover links encurtados, contar os acessos de cada 
 ## Demo
 
 - **App**: https://brev-ly-xi.vercel.app/
-- **API**: _(link após o deploy no Render)_
+- **API**: https://brevly-server-aq3d.onrender.com/
+
+> A API está no plano free do Render — se ficar 15min sem receber requisição ela "dorme" e o primeiro acesso depois disso demora ~1min pra responder (cold start). É só esperar, o app funciona normal depois.
 
 ## Estrutura
 
